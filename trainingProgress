@@ -1,0 +1,7 @@
+1. Docker installed
+2. Nvidia drivers installed
+3. Nvidia-Docker installed
+4. AWS-CLI installed
+
+ToDo:
+Follow steps in guide, install sagemaker, tensorflow, robomaker, python
