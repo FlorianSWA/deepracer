@@ -1,6 +1,10 @@
-local training working
-start training
-fix gazebo crashes while training
-hyperparam adjust
-start uploading trained files
+start writing about reinforced learning
+end chapter local training in latex 
+find sources about machine learning
+train and evalute model
 
+sebi
+update model starting with already learned model
+upload model to cloud 
+video fertig 
+strecke ändern
