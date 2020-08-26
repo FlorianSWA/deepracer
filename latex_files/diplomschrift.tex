@@ -1,95 +1,27 @@
-\chapter{Die Diplomschrift}
+\chapter{Thesis}
 \label{cha:Diplomschrift}
 
+\section{The Vehicle}
 
+The DeepRacer itself represents a core part of this thesis, as it is used to test the trained models in a real-world environment. Our school acquired two of these cars. one of which we are using for this thesis. Below is a list of all parts included with one DeepRacer vehicle.
+
+\begin{enumerate}
+    \item Vehicle chassis
+    \item Vehicle body cover
+    \item Compute module battery
+    \item Power cable and power adapter
+    \item Vehicle battery
+\end{enumerate}
+
+\subsection{Chassis and Accessories}
+The vehicle itself consists primarily of a four wheel drive chassis which holds all other components. The chassis can be further separated into a lower part, which contains the brushed electric motor, and an upper part that carries the compute module and a power bank to supply it. The entire car is build on a scale of 1/18\footnote{Source: https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-prep-vehicle.html} to a real car, meaning proportions like distance between wheels were kept realistic. This is especially apparent while driving, as one would expect better manoeuvrability and smaller turning radius.
+At the front there are three USB ports used to mount the camera and other equipment like keyboards. As a crucial part of any self-driving car, the camera provided with the DeepRacer provides a 4-megapixel image directly to the compute module. Since we are working with the first edition of the DeepRacer vehicle and not with the newer DeepRacer Evo, which has stereo cameras and a LiDAR sensor, object avoidance and head-to-head racing are not supported by default. It is however possible to purchase an upgrade kit for 249,00 \$, which includes an additional stereo camera and the LiDAR sensor.
+
+\subsection{Compute Module}
+These ports are also used to connect a mouse and keyboard in order to access the compute module. This module is most likely a Raspberry Pi running Ubuntu Linux. It also offers a HDMI port so that you are able to connect a monitor and
 
 \section{Machine Learning and Autonomous Driving}
 
-%Jede Diplomschrift ist anders und dennoch sind sich gute
-%Arbeiten in ihrer Struktur meist sehr ähnlich, \va\ bei
-%technischen Themen. Als Startpunkt bewährt hat sich die folgende
-%simple Grundstruktur, die man natürlich vari\-ieren und beliebig
-%verfeinern kann:
-%%
-%\begin{enumerate}
-%\item \textbf{Einführung und Motivation}: Was ist die Problem- oder Aufgabenstellung und
-%warum sollte man sich dafür interessieren?
-%\item \textbf{Präzisierung des Themas}: Hier beschreibt man den aktuellen Stand der Technik
-%oder Wissenschaft ("`State-Of-The-Art"'), zeigt bestehende
-%Defizite oder offene Fragen auf und entwickelt daraus die
-%Stoßrichtung der eigenen Arbeit.
-%\item \textbf{Eigener Ansatz}: Das ist natürlich der Kern der Arbeit. Hier
-%wird gezeigt, wie man die vorher beschriebene Aufgabenstellung löst und --
-%häufig in Form eines Programms%
-%\footnote{\emph{Prototyp} ist in diesem Zusammenhang ein gerne benutzter Begriff, der im Deutschen
-%allerdings oft unrichtig dekliniert wird. Richtig ist: der \emph{Prototyp}, des \emph{Prototyps}, dem/den \emph{Protototyp} -- falsch hingegen \zB: des \emph{Prototyp\underline{en}}!
-%} --
-%realisiert, ergänzt durch illustrative Beispiele.
-%\item \textbf{Zusammenfassung}: Was wurde erreicht und welche Ziele sind
-%noch offen geblieben, wo könnte man weiter arbeiten?
-%\end{enumerate}
-%%
-%Natürlich ist auch ein gewisser dramaturgischer Aufbau der Arbeit
-%wichtig, wobei man bedenken muss, dass der Leser in der Regel nur
-%wenig Zeit hat und -- anders als etwa bei einem Roman -- seine
-%Geduld nicht auf die lange Folter gespannt werden darf. Erklären
-%Sie bereits in der Einführung (und nicht erst im letzten Kapitel),
-%wie Sie an die Sache herangehen, welche Lösungen Sie vorschlagen
-%und wie erfolgreich Sie damit waren.
-%
-%Übrigens, auch Fehler und Sackgassen darf (und sollte) man
-%beschreiben, ihre Kenntnis hilft oft doppelte Experimente und
-%weitere Fehler zu vermeiden und ist damit sicher nützlicher als
-%jede Schönfärberei.
-%
-%
-%\section{Diplomschriften in Englisch}
-%\label{sec:englisch}
-%
-%Diese Vorlage ist zunächst darauf abgestellt, dass die
-%Diplomschrift in deutscher Sprache erstellt wird. Vor allem bei
-%Diplomarbeiten, die in Zusammenarbeit mit größeren Firmen oder
-%internationalen Instituten entstehen, ist es häufig erwünscht,
-%dass die Diplomschrift zur besseren Nutzbarkeit in englischer
-%Sprache verfasst wird, und viele Schulen lassen dies in
-%der Regel auch zu.
-%
-%Beachten sollte man allerdings, dass das Schreiben dadurch nicht
-%einfacher wird, auch wenn einem Worte und Sätze im Englischen
-%scheinbar leichter "`aus der Feder"' fließen. Gerade im Bereich
-%der Informatik erscheint durch die Dominanz englischer
-%Fachausdrücke das Schreiben im Deutschen mühsam und das Ausweichen
-%ins Englische daher besonders attraktiv. Das ist jedoch
-%trügerisch, da man die eigene Fertigkeit in der Fremdsprache
-%(trotz der meist langjährigen Schulbildung) häufig überschätzt.
-%Prägnanz und Klarheit gehen leicht verloren und bisweilen ist das
-%Resultat ein peinliches Gefasel ohne Zusammenhang und soliden
-%Inhalt. Sofern man das Englische nicht wirklich gut beherrscht, ist
-%es ratsam, zumindest die wichtigsten Teile der Arbeit zunächst in
-%Deutsch zu verfassen und erst nachträglich zu übersetzen.
-%Besonders vorsichtig sollte man bei der Übersetzung von scheinbar
-%vertrauten Fachausdrücken sein. Zusätzlich ist es immer zu
-%empfehlen, die fertige Arbeit von einem "`native speaker"'
-%korrigieren zu lassen.
-%
-%
-%
-%Technisch ist, außer der Spracheinstellung und den
-%unterschiedlichen Anführungszeichen (s.\
-%Abschn.~\ref{sec:anfuehrungszeichen}), für eine englische Arbeit
-%nicht viel zu ändern, allerdings sollte man folgendes beachten:
-%%
-%\begin{itemize}
-%\item  Die Titelseite (mit der Bezeichnung "`Diplomarbeit"') 
-%ist für die einzureichenden Exemplare jedenfalls in \emph{deutsch} zu halten,
-%auch wenn der Titel englisch ist. 
-%\item Ebenso muss neben dem
-%englischen \emph{Abstract} auch eine deutsche \emph{Kurzfassung}
-%enthalten sein. %
-%\item Akademische Titel von Personen haben im Englischen offenbar
-%weniger Bedeutung als im Deutschen und werden daher meist
-%weggelassen.
-%\end{itemize}
 
  \section{Local Training}
  
