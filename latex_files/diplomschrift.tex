@@ -1,27 +1,5 @@
-\chapter{Thesis}
+\chapter{Local Training}
 \label{cha:Diplomschrift}
-
-\section{The physical Track}
-
-Being able to drive along a simulation of the track is only a partial success. In order to prove successful, the trained algorithm is required to complete multiple runs on a real track using our DeepRacer vehicle. We decided on rebuilding the track used 2018 during the AWS re:Invent.
-
-The circular track starts with a 180° left turn, followed by a right-starting s-curve and continues on with two left turns back to the beginning. With a total width of 7.93 m and length of 5.18 m it impractical to paint it on a single, solid piece.
-
-Before we considered building the track, we painted it on the floor in our robotics laboratory. This was possible due to the floor being solid black, just like the road on the track.
-
-Rather than that we chose to use interlocking foam pieces which are lightweight and easy to store and transport.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=.85\textwidth]{deepracer-track-2018-guideline.png}
-    \caption{AWS re:Invent 2018 track}
-    \label{fig:track}
-\end{figure}
-
-\section{Machine Learning and Autonomous Driving}
-
-
- \section{Local Training}
  
  One of the major drawbacks of using the DeepRacer in a learning environment are the costs of training. Amazon offers easy, albeit functionally limited ways of training RL models in their cloud services. This sort of contradicts the intended use, as the DeepRacer is supposed to offer a simple and affordable entry into the ways of machine learning. Below is the pricing table. \footnote{Cited date 2020/08/20}
  \begin{table}
@@ -30,7 +8,7 @@ Rather than that we chose to use interlocking foam pieces which are lightweight 
  \centering
  \setlength{\tabcolsep}{5mm}
  \def\arraystretch{1.25}
- \begin{tabular}{|r|r|c|c|c|}
+ \begin{tabular}{|r|r|c|c|}
  \hline
  \textbf{service} & \textbf{pricing} \\
  \hline\hline

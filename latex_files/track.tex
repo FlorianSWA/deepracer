@@ -14,5 +14,26 @@ Before we considered building the track, we drew it on the floor in our robotics
 \section{The Material}
 Choosing the right material for the track proved to be straightforward. It came down to either interlocking wooden composite plates or interlocking foam pieces. Foam pieces provide many advantages compared to other materials. They are lightweight and easy to transport. Durability and thickness are not as important, as the track is not meant to be stepped on and our car does not weight a lot. Far more important is the ability of the pieces to stick together. The tiles must not under any circumstances break away from each other, this could cause serious damage to the track and vehicle. Interlocking foam tiles are the cheapest material still meeting all criteria, with the only drawback being the cost.
 
-\subsection{Track and Field Colour}
+\begin{table}
+ \caption{Material price comparison}
+ \label{tab:materials}
+ \centering
+ \setlength{\tabcolsep}{5mm}
+ \def\arraystretch{1.25}
+ \begin{tabular}{|r|r|c|c|}
+ \hline
+ \textbf{Material} & \textbf{Price} \\
+ \hline\hline
+ Black foam tiles & 299.85 € \\
+ \hline
+ Duct tape on floor & 59.85 € \\
+ \hline
+ \end{tabular}
+ \end{table}
 
+\subsection{Track and Field Colour}
+The material is not the only factor we need to consider when building the track. Since our model is trained in a simulation with a specific colour scheme, we went to recreate this colour set in order to achieve the best performance. The road is the easiest to paint, as its colour is solid black with orange markings in the middle. The green area which covers most of the track is far more difficult to recreate. This leads to two options:
+\begin{itemize}
+    \item Black foam tiles, either paint the background green or leave it black
+    \item Green foam tiles, where the road has to be drawn on
+\end{itemize}
