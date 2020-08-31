@@ -1,0 +1,26 @@
+\chapter{LocalTraining}
+
+\section{Local Training vs Cloud Training}
+Although the DeepRacer is a Product you purchase once and are able to use without any other costs accuring, the reinforced learning algorithm which teaches the car how to drive needs a lot of performance and takes up a lot of time. The whole marketing concept behind the DeepRacer advertises the AWS-Cloud and the services you have to use in order to train your model. Although the cloud products are very easy to use and handle the learning very well, Amazon requires a fee for specific services.In the following table I will show the costs of the services and why local training is cheaper
+%graphen einfügen
+But after searching the internet we found a very cost efficient method, to train the model on our own computer. Given that in our robotics-lab we gain access to a "super-computer", which would train our models easily and fast we decided train our model by ourselves. Amazon doesnt provide a easy to use interface to download and upload models because they dont want to support you using your own servers and computers to train. Following this idea it seems that a lot of people worked their way around and made their own GUI's and interfaces. We tested two different GitHub projects, but were only left with one working so our decision fell on "deepracer for dummies" from alex schulz 
+
+\section{Deepracer for dummies}
+The author of this project relies heavily on another repository from the GitHub user crr0004 called Chris. Because his instructions were a little unclear and the project itself was lacing of feature and usability for the inexperienced end user such us, he decided to expand the project and make it easier to use. 
+Before getting started with insalling the tools needed to run it on your machine you have to check if your computer meets the prerequisites:
+At first you have to ensure that your operating system is Ubuntu 18.04 or higher, because some of the packages needed are only available on linux.
+The next main point is that your system has to run on a Nvidia GPU and have CUDA/CUDNN installed and configured. If your machine doesnt provide a Nvidia GPU you are only able to train on your CPU which is much slower and takes a lot of time.
+You also should have installed Docker aswell as the Nvidia-Docker runtime. This is needed for the training environment to gain access to the GPU and create new timelines.
+Lastly vncviewer  has to be installed, because its the programm that controlos alle the interaction between the graphical user interface and the controllers from amazon.
+If your system meets all the requiretments above you have to clone to run the init.sh script.
+This could take up to 10 minites and all it does, it clone crr0004 reposetory, runs the needed scripts and creates and folderstructure including all the needed files, to manually adjust your code, train your model, and upload it to amazon.
+After the setup process is finished i am going to get into a more detailed description on how the project handles the communication with the amazon cloud and how it handles the model.
+
+ \section{Amazon Sagemaker}
+ Sagemaker is a service amazon provides to create, train and handle machinelearning models. It handles the normally complicated  learning process to make it easier training multiple large models and dont have to worry about alle the tools and work processes that need to be done to learn efficent. Sagemaker contains a large toolset to handle all different components of machine learning. 
+ %graphic
+ SageMaker Studio is a webbased visual user interface that provides you full access, control and insight of alle the steps that need to be done to create train and analyze a model. You can upload own models and analyze results, make expiriecnes or provide it to get into production. 
+SageMaker Ground on the other side, handles all the quick and easy to use data that is needed to train a model properly. Because a model is only as good as the data that is given to it, and with sagemaker ground you are able to manage all the trainig data.
+
+\section{Amazon Robomaker}
+Robomaker is a Cloud solution provided by amazon to create, simulate and test robotbased applications in large amounts. It gives you access to a fully scalable simulationinfrastructure for all you robots and your CI/CD-Integrations. Your are also given acces to an IDE to develop new Robotapplications and ROS extentions to make your robot coaloborate wit ROS.
