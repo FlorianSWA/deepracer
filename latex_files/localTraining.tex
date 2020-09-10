@@ -1,11 +1,35 @@
 \chapter{LocalTraining}
 
 \section{Local Training vs Cloud Training}
-Although the DeepRacer is a Product you purchase once and are able to use without any other costs accuring, the reinforced learning algorithm which teaches the car how to drive needs a lot of performance and takes up a lot of time. The whole marketing concept behind the DeepRacer advertises the AWS-Cloud and the services you have to use in order to train your model. Although the cloud products are very easy to use and handle the learning very well, Amazon requires a fee for specific services.In the following table I will show the costs of the services and why local training is cheaper
-%graphen einfügen
+One of the major drawbacks of using the DeepRacer in a learning environment are the costs of training. Amazon offers easy, albeit functionally limited ways of training RL models in their cloud services. This sort of contradicts the intended use, as the DeepRacer is supposed to offer a simple and affordable entry into the ways of machine learning. Below is the pricing table. \footnote{Cited date 2020/08/20}
+ \begin{table}
+ \caption{Pricing for model training with AWS services.}
+ \label{tab:services}
+ \centering
+ \setlength{\tabcolsep}{5mm}
+ \def\arraystretch{1.25}
+ \begin{tabular}{|r|r|c|c|}
+ \hline
+ \textbf{service} & \textbf{pricing} \\
+ \hline\hline
+ training and evaluation & 3.50 US\$ per hour \\
+ \hline
+ model storage & 0.023 US\$ per GB \\
+ \hline
+ \end{tabular}
+ \end{table}
+ In order to circumvent this cost barrier we -- like others before us -- began setting up a training environment on one of the more powerful computers in the robotics lab.
+ The setup for local training is available on GitHub \footcite{https://github.com/aws-deepracer-community/deepracer}. In order to function properly the computer had to meet the following requirements:
+ \begin{itemize}
+ \item A Linux distribution, preferably Ubuntu
+ \item NVIDIA grafic processor and proper drivers
+ \item Docker
+ \item Python
+ \item Minio, a S3 simulator
+ \end{itemize}
 But after searching the internet we found a very cost efficient method, to train the model on our own computer. Given that in our robotics-lab we gain access to a "super-computer", which would train our models easily and fast we decided train our model by ourselves. Amazon doesnt provide a easy to use interface to download and upload models because they dont want to support you using your own servers and computers to train. Following this idea it seems that a lot of people worked their way around and made their own GUI's and interfaces. We tested two different GitHub projects, but were only left with one working so our decision fell on "deepracer for dummies" from alex schulz 
 
-\section{Deepracer for dummies}
+\section{Installing the Project Deepracer for dummies}
 The author of this project relies heavily on another repository from the GitHub user crr0004 called Chris. Because his instructions were a little unclear and the project itself was lacing of feature and usability for the inexperienced end user such us, he decided to expand the project and make it easier to use. 
 Before getting started with insalling the tools needed to run it on your machine you have to check if your computer meets the prerequisites:
 At first you have to ensure that your operating system is Ubuntu 18.04 or higher, because some of the packages needed are only available on linux.
@@ -24,3 +48,9 @@ SageMaker Ground on the other side, handles all the quick and easy to use data t
 
 \section{Amazon Robomaker}
 Robomaker is a Cloud solution provided by amazon to create, simulate and test robotbased applications in large amounts. It gives you access to a fully scalable simulationinfrastructure for all you robots and your CI/CD-Integrations. Your are also given acces to an IDE to develop new Robotapplications and ROS extentions to make your robot coaloborate wit ROS.
+
+\section{S3}
+Amazon Simple Storage Service is a data Storage solution on whom you are able to store any kind of objects. It provides a high level of securaty, scalability and performence. You can use s3 for a large variaty of different usecases such as websites, mobile applications, IoT and Big Data Analytics.
+
+\section{Errors occuring during the Installation process}
+At our first try we installed all the needed tools and services, but made the mistake to forget to specify the nvidia cuda drivers. Altough the installation was succesfull, we were not able to train the model correctly, because the drivers didnt handle the communication between the invidual services well. The gui had a lot of bugs and was mostly unresponsive. We decided to uninstall all the drivers, files and services and get back to 0. We read the instarcutions one more time slowly and then relaised our human error. After repeating the whole installation process but including the wright driver version everything was working fine and we were able to start training our model. Furthermore we tried setting up the whole process on our laptops using ubunto in an virtial machine. But after discovering the cuda drivers wouldnt work out of a VM because they were not allowed to allocate memory on the physical graphics card, likewise because the hyperwiser wouldnt allow that, we tossed out that idea quickly
