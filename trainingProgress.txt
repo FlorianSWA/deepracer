@@ -8,3 +8,11 @@ update model starting with already learned model
 upload model to cloud 
 video fertig 
 strecke ändern
+
+
+## Neuinstallation Stand 14.09.2020 16:00 ##
+
+NVIDIA Docker: erledigt
+VNC Viewer: erledigt
+init.sh ausgeführt.
+start.sh ausgeführt
