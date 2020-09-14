@@ -1,0 +1,3 @@
+## Kleinere Strecke erstellen ##
+
+Der Roboter ist 8 Zoll breit und 9 Zoll lang.
