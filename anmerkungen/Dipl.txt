@@ -1,0 +1,26 @@
+Schwarzl
+
+-introduction
+-reinforced learning theorie
+
+
+
+Rohrer
+
+-gazebo
+-rviz
+-sagemaker weiter
+-s3 weiter
+-robomaker weiter
+
+
+
+
+
+
+
+
+später 
+-Deepracer League
+-real World Applications
+-Track versuche nicht gut geklappt und neu bauen
