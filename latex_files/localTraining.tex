@@ -1,6 +1,6 @@
-\chapter{LocalTraining}
+\chapter{Local Training}
 
-\section{Local Training vs Cloud Training}
+\section{Local Training vs. Cloud Training}
 One of the major drawbacks of using the DeepRacer in a learning environment are the costs of training. Amazon offers easy, albeit functionally limited ways of training RL models in their cloud services. This sort of contradicts the intended use, as the DeepRacer is supposed to offer a simple and affordable entry into the ways of machine learning. Below is the pricing table. \footnote{Cited date 2020/08/20}
  \begin{table}
  \caption{Pricing for model training with AWS services.}
@@ -14,7 +14,7 @@ One of the major drawbacks of using the DeepRacer in a learning environment are 
  \hline\hline
  training and evaluation & 3.50 US\$ per hour \\
  \hline
- model storage & 0.023 US\$ per GB \\
+ model storage & 0.023 US\$ per GB and month \\
  \hline
  \end{tabular}
  \end{table}
@@ -27,30 +27,30 @@ One of the major drawbacks of using the DeepRacer in a learning environment are 
  \item Python
  \item Minio, a S3 simulator
  \end{itemize}
-But after searching the internet we found a very cost efficient method, to train the model on our own computer. Given that in our robotics-lab we gain access to a "super-computer", which would train our models easily and fast we decided train our model by ourselves. Amazon doesnt provide a easy to use interface to download and upload models because they dont want to support you using your own servers and computers to train. Following this idea it seems that a lot of people worked their way around and made their own GUI's and interfaces. We tested two different GitHub projects, but were only left with one working so our decision fell on "deepracer for dummies" from alex schulz 
+But after searching the internet we found a very cost efficient method, to train the model on our own computer. Given that in our robotics-lab we gain access to a "super-computer", which would train our models easily and fast we decided train our model by ourselves. Amazon doesnt provide a easy to use interface to download and upload models because they dont want to support you using your own servers and computers to train. Following this idea it seems that a lot of people worked their way around and made their own GUI's and interfaces. We tested two different GitHub projects, but were only left with one working so our decision fell on "deepracer for dummies" from Alex Schulz. 
 
 \section{Installing the Project Deepracer for dummies}
-The author of this project relies heavily on another repository from the GitHub user crr0004 called Chris. Because his instructions were a little unclear and the project itself was lacing of feature and usability for the inexperienced end user such us, he decided to expand the project and make it easier to use. 
-Before getting started with insalling the tools needed to run it on your machine you have to check if your computer meets the prerequisites:
+The author of this project relies heavily on another repository from the GitHub user crr0004 called Chris. Because his instructions were unclear and the project itself was lacking features and had poor usability, he decided to expand the project and make it easier to use. 
+Before getting started with installing the tools needed to run it on your machine you have to check if your computer meets the prerequisites:
 At first you have to ensure that your operating system is Ubuntu 18.04 or higher, because some of the packages needed are only available on linux.
-The next main point is that your system has to run on a Nvidia GPU and have CUDA/CUDNN installed and configured. If your machine doesnt provide a Nvidia GPU you are only able to train on your CPU which is much slower and takes a lot of time.
+The next main point is that your system has to run on a Nvidia GPU and have CUDA/CUDNN installed and configured. If your machine doesn't provide a Nvidia GPU you are only able to train on your CPU which is much slower and takes a lot of time.
 You also should have installed Docker aswell as the Nvidia-Docker runtime. This is needed for the training environment to gain access to the GPU and create new timelines.
-Lastly vncviewer  has to be installed, because its the programm that controlos alle the interaction between the graphical user interface and the controllers from amazon.
+Lastly vncviewer has to be installed, because its the programm that controls all interaction between the graphical user interface and the controllers from amazon.
 If your system meets all the requiretments above you have to clone to run the init.sh script.
-This could take up to 10 minites and all it does, it clone crr0004 reposetory, runs the needed scripts and creates and folderstructure including all the needed files, to manually adjust your code, train your model, and upload it to amazon.
-After the setup process is finished i am going to get into a more detailed description on how the project handles the communication with the amazon cloud and how it handles the model.
+This may take up to 10 minutes and all it does is, it clone crr0004 repository, runs the required scripts and creates the necessary folder structure including all the needed files, to manually adjust your code, train your model, and upload it to amazon.
+After the setup process is finished Is am going to get into a more detailed description on how the project handles the communication with the amazon cloud and how it handles the model.
 
  \section{Amazon Sagemaker}
- Sagemaker is a service amazon provides to create, train and handle machinelearning models. It handles the normally complicated  learning process to make it easier training multiple large models and dont have to worry about alle the tools and work processes that need to be done to learn efficent. Sagemaker contains a large toolset to handle all different components of machine learning. 
+ Sagemaker is a service amazon provides to create, train and handle machine learning models. It handles the normally complicated  learning process to make it easier training multiple large models and don't have to worry about all the tools and work processes that need to be done to learn efficient. Sagemaker contains a large tool set to handle all different components of machine learning. 
  %graphic
- SageMaker Studio is a webbased visual user interface that provides you full access, control and insight of alle the steps that need to be done to create train and analyze a model. You can upload own models and analyze results, make expiriecnes or provide it to get into production. 
-SageMaker Ground on the other side, handles all the quick and easy to use data that is needed to train a model properly. Because a model is only as good as the data that is given to it, and with sagemaker ground you are able to manage all the trainig data.
+ SageMaker Studio is a web-based visual user interface that provides you full access, control and insight of all the steps that need to be done to create train and analyse a model. You can upload own models and analyse results, make experience or provide it to get into production. 
+SageMaker Ground on the other side, handles all the quick and easy to use data that is needed to train a model properly. Because a model is only as good as the data that is given to it, and with sagemaker ground you are able to manage all the training data.
 
 \section{Amazon Robomaker}
-Robomaker is a Cloud solution provided by amazon to create, simulate and test robotbased applications in large amounts. It gives you access to a fully scalable simulationinfrastructure for all you robots and your CI/CD-Integrations. Your are also given acces to an IDE to develop new Robotapplications and ROS extentions to make your robot coaloborate wit ROS.
+Robomaker is a Cloud solution provided by amazon to create, simulate and test robot-based applications in large amounts. It gives you access to a fully scale able simulation infrastructure for all you robots and your CI/CD-Integration. Your are also given access to an IDE to develop new Robot applications and ROS extensions to make your robot collaborate with the operating System.
 
 \section{S3}
-Amazon Simple Storage Service is a data Storage solution on whom you are able to store any kind of objects. It provides a high level of securaty, scalability and performence. You can use s3 for a large variaty of different usecases such as websites, mobile applications, IoT and Big Data Analytics.
+Amazon Simple Storage Service is a data Storage solution on whom you are able to store any kind of objects. It provides a high level of security, scale ability and performance. You can use s3 for a large variety of different use cases such as websites, mobile applications, IoT and Big Data Analytics.
 
-\section{Errors occuring during the Installation process}
-At our first try we installed all the needed tools and services, but made the mistake to forget to specify the nvidia cuda drivers. Altough the installation was succesfull, we were not able to train the model correctly, because the drivers didnt handle the communication between the invidual services well. The gui had a lot of bugs and was mostly unresponsive. We decided to uninstall all the drivers, files and services and get back to 0. We read the instarcutions one more time slowly and then relaised our human error. After repeating the whole installation process but including the wright driver version everything was working fine and we were able to start training our model. Furthermore we tried setting up the whole process on our laptops using ubunto in an virtial machine. But after discovering the cuda drivers wouldnt work out of a VM because they were not allowed to allocate memory on the physical graphics card, likewise because the hyperwiser wouldnt allow that, we tossed out that idea quickly
+\section{Errors occurring during the Installation process}
+At our first try we installed all the needed tools and services, but made the mistake to forget to specify the NVIDIA cuda drivers. Although the installation was successful, we were not able to train the model correctly, because the drivers didn't handle the communication between the individual services well. The GUI had a lot of bugs and was mostly unresponsive. We decided to uninstall all the drivers, files and services and get back to 0. We read the instructions one more time slowly and then realised our human error. After repeating the whole installation process but including the wright driver version everything was working fine and we were able to start training our model. Furthermore we tried setting up the whole process on our laptops using Ubuntu in an virtual machine. But after discovering the cuda drivers wouldn't work out of a VM because they were not allowed to allocate memory on the physical graphics card, likewise because the hypervisor wouldnt allow that, we tossed out that idea quickly

@@ -1,10 +1,10 @@
 \chapter{The physical Track}
 
-Being able to drive along a simulation of the track is only a partial success. In order to prove successful, the trained algorithm is required to complete multiple runs on a real track using our DeepRacer vehicle. We decided on rebuilding the track used 2018 during the AWS re:Invent. The circular track starts with a 180° left turn, followed by a right-starting s-curve and continues on with two left turns back to the beginning. With a total width of 7.93 m and length of 5.18 m it impractical to paint it on a single, solid piece.
+Being able to drive along a simulation of the track is only a partial success. In order to prove successful, the trained algorithm is required to complete multiple runs on a real track using our DeepRacer vehicle. We decided on rebuilding a simple loop with a length of 180" and a width of 140" and a 24" wide road. As mentioned later on, these dimensions could not be used.
 
 \begin{figure}
     \centering
-    \includegraphics[width=.85\textwidth]{deepracer-track-2018-guideline.png}
+    \includegraphics[width=.85\textwidth]{images/deepracer-track-loop.png}
     \caption{AWS re:Invent 2018 track}
     \label{fig:track}
 \end{figure}
@@ -12,7 +12,7 @@ Being able to drive along a simulation of the track is only a partial success. I
 Before we considered building the track, we drew it on the floor in our robotics laboratory using duct tape. This was possible due to the floor being solid black, just like the road on the track. This variant has several drawbacks compared to a properly built track. Built like this the track is stationary and can not be removed without destroying parts of it. During removal it might even happen that the adhesive will leave stains on the floor, which then again need to be removed. The alternative, interlocking foam pieces, are transportable and more durable, as they can be easily removed and rebuild as needed. Their major drawback is the costs. While using duct tape as markings on the floor is cheaper and faster, using foam puzzles will be more efficient in the long run.
 
 \section{The Material}
-Choosing the right material for the track proved to be straightforward. It came down to either interlocking wooden composite plates or interlocking foam pieces. Foam pieces provide many advantages compared to other materials. They are lightweight and easy to transport. Durability and thickness are not as important, as the track is not meant to be stepped on and our car does not weight a lot. Far more important is the ability of the pieces to stick together. The tiles must not under any circumstances break away from each other, this could cause serious damage to the track and vehicle. Interlocking foam tiles are the cheapest material still meeting all criteria, with the only drawback being the cost.
+Choosing the right material for the track proved to be straightforward. At first we thought of interlocking foam pieces. Foam pieces provide many advantages compared to other materials. They are lightweight and easy to transport. Durability and thickness are not as important, as the track is not meant to be stepped on and our car does not cause much wear and tear. Far more important is the ability of the pieces to stick together. The tiles must not under any circumstances break away from each other, this could cause serious damage to the track and vehicle. The only downside was the price. As seen in the table below, laying out the entire Loop would cost around 300 €. Our second option was to use duct tape as markings on the black floor in our laboratory. While it is not nearly as durable as the foam tiles, this method is far cheaper. In the end the decision fell on using duct tape markings on the floor for our first test runs. Therefor white and yellow duct tape was bought at a nearby hardware store.
 
 \begin{table}
  \caption{Material price comparison}
@@ -30,10 +30,14 @@ Choosing the right material for the track proved to be straightforward. It came 
  \hline
  \end{tabular}
  \end{table}
-
+\begin{comment} % ToDo: Rewrite section
 \subsection{Track and Field Colour}
 The material is not the only factor we need to consider when building the track. Since our model is trained in a simulation with a specific colour scheme, we went to recreate this colour set in order to achieve the best performance. The road is the easiest to paint, as its colour is solid black with orange markings in the middle. The green area which covers most of the track is far more difficult to recreate. This leads to two options:
 \begin{itemize}
     \item Black foam tiles, either paint the background green or leave it black
     \item Green foam tiles, where the road has to be drawn on
 \end{itemize}
+\end{comment}
+
+\section{Building the track}
+After the decision on the material was final,  the process of building the track began. For multiple reasons we were required to increase the size of our track, which lead to the track being 204" long and 162" wide. The width of the road was reduced to 22". This, combined with the uneven floor, made accurate measurements difficult. Therefor the track borders have an average derivation of 0.8". In contrary to our expectations the duct tape proved to be durable enough. Even with people walking over the track and objects like chairs being pushed over the markings on the floor, the tape 
