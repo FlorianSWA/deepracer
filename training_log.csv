@@ -1,0 +1,3 @@
+Local Training Progress Table,,,,,,
+Training Session,Setup,Start Time,End Time,Reward Function,Track,Result
+Session 1 – Local Taining,"Local, GPU Nvidia GTX 1070",12:03 2021-02-04,14:01 2021-02-04,Default – as in session1,reinvent_base,"Mediocre, can occasoinaly finish a complete lap, altough not in evaluation"
