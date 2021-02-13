@@ -1,0 +1,4 @@
+Local Training Progress Table,,,,,,,
+Training Session,Setup,Start Time,End Time,Reward Function,Track,Result,Description
+Session 1 – Local Taining,"Local, GPU Nvidia GTX 1070",12:03 2021-02-04,14:01 2021-02-04,Default – as in session1 folder,reinvent_base,"Mediocre, can occasoinaly finish a complete lap, altough not in evaluation. Very high Step count, around 40 000",
+Session 1.1 – Local Training,"Local, GPU Nvidia GTX 1070",14:40 2021-02-08,15:03 2021-02-04,Same as in Session 1,reinvent_base,"Step count at 1876 in training episode 16, shown in docker logs. Performance is better than during the first run. Reward was inconsistent. Log saved in file.",Reused Model from Session 1
