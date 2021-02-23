@@ -276,9 +276,9 @@ der HTL Wiener Neustadt]
 %\thispagestyle{empty}
 
 \noindent
-Hiermit erkläre ich an Eides statt, dass ich die vorliegende Arbeit
-selbst\-ständig und ohne fremde Hilfe verfasst, andere als die angegebenen
-Quellen und Hilfsmittel nicht benutzt und die den benutzten Quellen wörtlich und inhaltlich entnommenen Stellen als solche erkenntlich gemacht habe.
+%Hiermit erkläre ich an Eides statt, dass ich die vorliegende Arbeit
+%selbst\-ständig und ohne fremde Hilfe verfasst, andere als die angegebenen
+%Quellen und Hilfsmittel nicht benutzt und die den benutzten Quellen wörtlich und inhaltlich entnommenen Stellen als solche erkenntlich gemacht habe.
 
 \vspace{10mm}
 \noindent

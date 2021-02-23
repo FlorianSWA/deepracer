@@ -1,10 +1,13 @@
 \chapter{The physical Track}
+Author: Florian Schwarzl
 
-Being able to drive along a simulation of the track is only a partial success. In order to prove successful, the trained algorithm is required to complete multiple runs on a real track using our DeepRacer vehicle. We decided on rebuilding a simple loop with a length of 180" and a width of 140" and a 24" wide road. As mentioned later on, these dimensions could not be used.
+Being able to drive along a simulation of the track is only a partial success. In order to prove successful, the trained algorithm is required to complete multiple runs on a real track using our DeepRacer vehicle. When training an autonomous vehcile with reinforcement learning for a real-world scenario, it is logical to create the simulation so that is represents the real environment as precisely as possible. However, since this is a leaning environment and the environment is set by Amazon, we are required to achieve the exact opposite. We need to create a real-world track that fits those from the training simulation. How accurately the physical course represents the simulated one will have a direct impact on the performance of the vehicle.
+
+We decided on rebuilding a simple loop with a length of 180" and a width of 140" and a 24" wide road. As mentioned later on, these dimensions could not be used.
 
 \begin{figure}
     \centering
-    \includegraphics[width=.85\textwidth]{images/deepracer-track-loop.png}
+    \includegraphics[width=.85\textwidth]{images/oval_track.png}
     \caption{AWS re:Invent 2018 track}
     \label{fig:track}
 \end{figure}
@@ -12,32 +15,37 @@ Being able to drive along a simulation of the track is only a partial success. I
 Before we considered building the track, we drew it on the floor in our robotics laboratory using duct tape. This was possible due to the floor being solid black, just like the road on the track. This variant has several drawbacks compared to a properly built track. Built like this the track is stationary and can not be removed without destroying parts of it. During removal it might even happen that the adhesive will leave stains on the floor, which then again need to be removed. The alternative, interlocking foam pieces, are transportable and more durable, as they can be easily removed and rebuild as needed. Their major drawback is the costs. While using duct tape as markings on the floor is cheaper and faster, using foam puzzles will be more efficient in the long run.
 
 \section{The Material}
-Choosing the right material for the track proved to be straightforward. At first we thought of interlocking foam pieces. Foam pieces provide many advantages compared to other materials. They are lightweight and easy to transport. Durability and thickness are not as important, as the track is not meant to be stepped on and our car does not cause much wear and tear. Far more important is the ability of the pieces to stick together. The tiles must not under any circumstances break away from each other, this could cause serious damage to the track and vehicle. The only downside was the price. As seen in the table below, laying out the entire Loop would cost around 300 €. Our second option was to use duct tape as markings on the black floor in our laboratory. While it is not nearly as durable as the foam tiles, this method is far cheaper. In the end the decision fell on using duct tape markings on the floor for our first test runs. Therefor white and yellow duct tape was bought at a nearby hardware store.
+Choosing the right material for the track proved to be straightforward. At first we thought of interlocking foam pieces. Foam pieces provide many advantages compared to other materials. They are lightweight and easy to transport. Durability and thickness are not as important, as the track is not meant to be stepped on and our car does not cause much wear and tear. Far more important is the ability of the pieces to stick together. The tiles must not under any circumstances break away from each other, this could cause serious damage to the track and vehicle. The only downside was the price. As seen in the table below, laying out the entire loop would cost around 300 €. Our second option was to use duct tape as markings on the black floor in our laboratory. While it is not nearly as durable as the foam tiles, this method is far cheaper. In the end the decision fell on using duct tape markings on the floor for our first test runs. Therefor white and yellow duct tape was bought at a nearby hardware store.
 
-\begin{table}
- \caption{Material price comparison}
- \label{tab:materials}
- \centering
- \setlength{\tabcolsep}{5mm}
- \def\arraystretch{1.25}
- \begin{tabular}{|r|r|c|c|}
- \hline
- \textbf{Material} & \textbf{Price} \\
- \hline\hline
- Black foam tiles & 299.85 € \\
- \hline
- Duct tape on floor & 59.85 € \\
- \hline
- \end{tabular}
- \end{table}
-\begin{comment} % ToDo: Rewrite section
+%\begin{table}
+% \caption{Material price comparison}
+%\label{tab:materials}
+% \centering
+% \setlength{\tabcolsep}{5mm}
+% \def\arraystretch{1.25}
+% \begin{tabular}{|r|r|c|c|}
+% \hline
+% \textbf{Material} & \textbf{Price} \\
+% \hline\hline
+% Black foam tiles & 299.85 € \\
+% \hline
+% Duct tape on floor & 59.85 € \\
+% \hline
+% \end{tabular}
+% \end{table}
+% ToDo: Rewrite section
 \subsection{Track and Field Colour}
 The material is not the only factor we need to consider when building the track. Since our model is trained in a simulation with a specific colour scheme, we went to recreate this colour set in order to achieve the best performance. The road is the easiest to paint, as its colour is solid black with orange markings in the middle. The green area which covers most of the track is far more difficult to recreate. This leads to two options:
-\begin{itemize}
-    \item Black foam tiles, either paint the background green or leave it black
-    \item Green foam tiles, where the road has to be drawn on
-\end{itemize}
-\end{comment}
+%\begin{itemize}
+%    \item Black foam tiles, either paint the background green or leave it black
+%    \item Green foam tiles, where the road has to be drawn on
+%\end{itemize}
+%\end{comment}
 
 \section{Building the track}
-After the decision on the material was final,  the process of building the track began. For multiple reasons we were required to increase the size of our track, which lead to the track being 204" long and 162" wide. The width of the road was reduced to 22". This, combined with the uneven floor, made accurate measurements difficult. Therefor the track borders have an average derivation of 0.8". In contrary to our expectations the duct tape proved to be durable enough. Even with people walking over the track and objects like chairs being pushed over the markings on the floor, the tape 
+After the decision on the material was final,  the process of building the track began. For multiple reasons we were required to increase the size of our track, which lead to the track being 204" long and 162" wide. The width of the road was reduced to 22". This, combined with the uneven floor, made accurate measurements difficult. Therefor the track borders have an average derivation of 0.8". In contrary to our expectations the duct tape proved to be durable enough. Other than the tape on the floor representing the road markings, no other materials were used. This means there were no vertical borders around the track. This lead to multiple occasions where the vehicle went off track and ran into an obstacle before it could stop.
+
+\subsection{Side borders}
+Our first course did not have any railings or borders on the side which would have prevented the car from going off track too far. The main purpose of these borders would have been to keep the vehicle from driving into obstacles around the track. Although the car is supposed to stop should it recognise that it went off the track, it happens that due to its speed it is not able to slow down in time. The barriers on the track limits serve the purpose to stop the car without damaging it, should such a scenario as described above occur.
+
+The secondary purpose of the barriers is to provide a solid colour background, preferably in contrast to the road. Similar side covers can be seen during official tournaments. Recognising that it drove outside of the track limits is simpler and more consistent.

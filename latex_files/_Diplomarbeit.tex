@@ -8,7 +8,7 @@
 %\renewcommand{\familydefault}{\sfdefault}
 
 \graphicspath{{images/}}    % Bilderverzeichnis
-
+\usepackage{array}
 
 \include{Settings}
 
@@ -20,7 +20,7 @@
 \begin{document}
 %%%----------------------------------------------------------
 %Einstellungen an die eigene Diplomarbeit anpassen
-\title{AWS DeepRacer}
+\title{Racing with Reinforcement Learning}
 \abteilung{Informatik}
 %\schwerpunkt{} wenn kein Ausbildungsschwerpunkt vorhanden ist z.B. Informatik
 \schwerpunkt{Ausbildungsschwerpunkt Machine Learning}
@@ -70,11 +70,13 @@
 %%%----------------------------------------------------------
 
 \include{einleitung}
-%\include{diplomschrift}
+\include{diplomschrift}
+\include{rl_theory}
+\include{awsImplementation}
 \include{vehicle}
 \include{track}
 \include{localTraining}
-\include{awsImplementation}
+\include{deepracer_league}
 \include{schluss}
 
 %%%----------------------------------------------------------
