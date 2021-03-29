@@ -1,8 +1,10 @@
 Local Training Progress Table,,,,,,,
 Training Session,Setup,Start Time,End Time,Reward Function,Track,Result,Description
 Session 1 – Local Taining,"Local, GPU Nvidia GTX 1070",12:03 2021-02-04,14:01 2021-02-04,Default – as in session1 folder,reinvent_base,"Mediocre, can occasoinaly finish a complete lap, altough not in evaluation. Very high Step count, around 40 000",
-/home/lord/Documents/flask/index.py,"Local, GPU Nvidia GTX 1070",14:40 2021-02-08,15:03 2021-02-04,Same as in Session 1,reinvent_base,"Step count at 1876 in training episode 16, shown in docker logs. Performance is better than during the first run. Reward was inconsistent. Log saved in file.",Reused Model from Session 1
+Sesison 1.1 – Local Training,"Local, GPU Nvidia GTX 1070",14:40 2021-02-08,15:03 2021-02-04,Same as in Session 1,reinvent_base,"Step count at 1876 in training episode 16, shown in docker logs. Performance is better than during the first run. Reward was inconsistent. Log saved in file.",Reused Model from Session 1
 ,,,,,,,
 Session 2 – Local Taining,"Local, GPU Nvidia GTX 1070",11:02 2021-02-22,11:39 2021-02-22,Default,Oval_track,,Compare performance between cloud and local traaaining
 ,,,,,,,
 Sesison 3 – Local Training,"Local, GPU Nvidia GTX 1070",16:236 2021-02-24,18:00 2021-02-24,Reward function penalizing steering and speed limit,Oval_track,Below previous results.,Test new reward function
+,,,,,,,
+Session 4 – Local Taining,"Local, GPU Nvidia GTX 1070",17:55 2021-03-29,19:43 2021-03-29,Using waypoints as described on the Wiki,Oval_track,,
