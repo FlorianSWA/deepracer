@@ -36,6 +36,11 @@ The purpose of this steering mechanism is to minimize or in the best case comple
 What the agent considers to be the centre steering angle as well as the maximum steering angles can be configured via the web interface. This is necessary so that the car can drive in a straight line. Incorrectly configured steering can lead to severe hits in performance as the model has to compensate for the drift caused by the misaligned wheels. In order to achieve the best results, the values defined in the action space before training should match the actions possible in real world scenarios. Alternatively, the steering configuration can be customised to fit the one defined in the action space. While fitting the simulation to the real world actions is likely to yield better results, it is often simpler to approximately configure the car's steering angle to match those defined in the action space.\repeatfootcite[p. 96]{AWS19}
 
 \subsection{Vehicle and Compute-Module Batteries}
+These batteries provide all parts with their necessary power. The battery supplying the compute-module is a common power bank with an USB-C connection. The one contained in the scope of delivery provides 10 000 mAh of power. This is sufficient for operating it 3 to 4 hours long. 
+
+The battery powering steering and engine has less capacity and smaller in dimension. Its capacity is 7 500 mAh, which is enough for about 1 hours of continuous driving.
+
+Replacements can be done with ease, as both are easily accessible and replacement parts can be ordered online at reasonable prices. Especially the power bank used for the compute-module does not have to meet any other criteria than to fit on top of the vehicle and have sufficient capacity.
 
 \section{Compute Module}
 The upper component houses the ``brain'' of our car. The compute module consists of an Intel Atom
@@ -56,11 +61,18 @@ As seen in figure \ref{fig:vehicle_front}, facing the left side of the car are t
     \centering
     \includegraphics[width=.85\textwidth]{images/IMG_20201117_091128.jpg}
     \caption{AWS DeepRacer Vehicle side view}
-    \label{fig:vehicle_front}
+    \label{fig:vehicle_side}
 \end{figure}
 
 \subsubsection{Web-Interface}
 The compute module hosts its own web interface, from which the vehicle can be monitored, remotely controlled and configured. This interface is meant to be the main access point when working with the car. The website can be retrieved by accessing the IP-address of the car with a web browser. The address as well as the password which is required in order to access the configuration interface can be found on a label on the bottom of the car. The primary purpose of the website is configuration. This is indeed very useful as it removes the need to access the compute modules operating system directly. If not for the web-interface, for every change it would be necessary to directly access the operating system by connecting a display, mouse and keyboard.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.85\textwidth]{images/deepracer_console_1.png}
+    \caption{DeepRacer Web interface}
+    \label{fig:web_interface}
+\end{figure}
 
 \subsection{Configuration}
 
@@ -70,6 +82,35 @@ In order to acquire the necessary information from the environment, the agent is
 As mentioned, the default sensor provided is a single front-facing camera, connected via an USB-port at the front of the vehicle. The image provided by this part is the only information which the agent receives from its environment. This information is sufficient for the agent to traverse a marked track without obstacles or other vehicles. The only other information at our disposal is the sensor data from the electric motor and steering control. This provides us with the information about the current speed and steering angle. Apart from that, all other information comes solely from the camera. Considering this, it is impressive that with a simple camera image, an entire vehicle can be controlled autonomously.
 
 \section{Remote Control}
+By default the DeepRacer vehicle offers the option for remote control via a virtual joystick on its web-interface. The direction as well as speed can be controlled this way. The input of this joystick is send to the car via an Web-API. This API is hosted on the same web-server as the local interface seen in figure \ref{fig:web_interface}, this however shows the option for autonomous driving. Switching to manual control is done by selecting the manual mode tab located at the top right corner. After selecting the manual control tab, the website shows the joystick instead of the model selection menu. This can be seen in figure \ref{fig:manual_control}. Below the analogue-stick is the menu used for configuring the maximum speed. The current value is shown above the two buttons in percent. As an example, a value of 50 percent indicates that, when the analogue-stick is pressed all the way forward, the car drives at half of its highest possible velocity. This is the default way of remote controlling and sufficient enough for simple tests. If a more precise and ergonomic control mechanism is desired then it is necessary to directly access the underlying API. Accessing the  electric motor directly via ROS\footnote{Robot Operating System} is possible but not required. Driving this way has several disadvantages, most notably is it not possible to connect a game controller or similar device to the compute module, since the module does not have Bluetooth. Counteracting this can be achieved by using a computer as middle man. The game controller is connected to the computer, which sends the input to the vehicles manual control API.
 
+\subsection{Web-API}
+The application program interface is hosted on the same web-server as the rest of the local website. It is accessible behind the <IP-address>/api/ path. In order to access remote control, the correct credentials have to be put in and send to the /api/login endpoint. This then returns a session cookie which authorises the usage of other functionalities. The cookie has to sent with every request, otherwise it will return with an error stating an unauthorised access. The following list shows all endpoints relevant for remotely steering the car.
+
+\begin{itemize}
+    \item \textbf{Endpoint: start\_stop}: This API endpoint accepts the PUT method with a JSON-object with one field set. This field is named start\_stop and can take on either string of start or stop. It tells the car to either start or stop on the spot. This API call is with start as parameter is required before beginning to drive.
+    \item \textbf{Endpoint: manual\_drive}: Expects HTTP method PUT with a JSON-object containing the steering angle, speed and maximum speed.
+\end{itemize}
+
+The first API call is only used to start the car before driving. Without this, the vehicle will not move, even if told to do so by the second command. The endpoint manual\_drive is used to control the vehicle. It continuously receives requests which consist of three fields. The first field is named angle and defines the steering angle as a value ranging from -1 to 1. In this context, -1 is defined as a full left turn, while 1 represents a sharp right turn. The actual degree are set in the configuration menu under the maximum-steering-angle section.
+
+%\begin{center}
+% \begin{tabular}{| c c c |} 
+% \hline
+% Endpoint & HTTP method & Description \\ [0.5ex] 
+% \hline \hline
+% \verb|start_stop| & PUT & Expects a JSON object \\ 
+% \hline
+% \verb|manual_drive| & PUT & Expects JSON object with %throttle, angle and maximum speed \\
+% \hline
+%\end{tabular}
+%\end{center}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.85\textwidth]{images/manual-control.png}
+    \caption{Manual control interface}
+    \label{fig:manual_control}
+\end{figure}
 
 % maybe insert image of DeepRacer console here

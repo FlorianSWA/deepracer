@@ -9,6 +9,7 @@
 
 \graphicspath{{images/}}    % Bilderverzeichnis
 \usepackage{array}
+\usepackage{minted}
 
 \include{Settings}
 
@@ -68,7 +69,7 @@
 %%%----------------------------------------------------------
 \mainmatter           %Hauptteil (ab hier arab. Seitenzahlen)
 %%%----------------------------------------------------------
-
+\begin{english}
 \include{einleitung}
 \include{diplomschrift}
 \include{rl_theory}
@@ -78,7 +79,7 @@
 \include{localTraining}
 \include{deepracer_league}
 \include{schluss}
-
+\end{english}
 %%%----------------------------------------------------------
 %%%Anhang
 \appendix
@@ -114,6 +115,6 @@
 %%%----------------------------------------------------------
 
 %%%Messbox zur Druckkontrolle
-%\include{messbox}
+\include{messbox}
 
 \end{document}

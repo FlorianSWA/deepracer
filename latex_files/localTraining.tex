@@ -1,6 +1,7 @@
 \chapter{Local Training}
 
 \section{Local Training vs. Cloud Training}
+Author: Sebastian Rohrer\newline
 One of the major drawbacks of using the DeepRacer in a learning environment are the costs of training. Amazon offers easy, albeit functionally limited ways of training RL models in their cloud services. This sort of contradicts the intended use, as the DeepRacer is supposed to offer a simple and affordable entry into the ways of machine learning.
  In order to circumvent this cost barrier we -- like others before us -- began setting up a training environment on one of the more powerful computers in the robotics lab. After searching the internet we found a very cost efficient method, to train the model on our own computer. Given that in our robotics-lab we gain access to a "super-computer", which would train our models easily and fast we decided to train it by ourselves. Amazon doesn't provide a easy to use interface to download and upload models because they don't want to support you using your own servers and computers to train. Following this idea it seems that a lot of people worked their way around and made their own GUI's and interfaces.
  The setup for local training is available on GitHub 
@@ -68,17 +69,17 @@ To train and create the model according the rules, you have to use the programs 
 \end{itemize}
 
 \subsection{Amazon Sagemaker}
-Sagemaker is a service amazon provides, to create, train and handle machine learning models. It handles the normally complicated  learning process to make it easier, training multiple large models and don't have to worry about all the tools and work processes that need to be done to learn efficient. Sagemaker contains a large tool-set to handle all different components of machine learning. It also include a debugger and pro-filer, which helps identifying training-errors and performance-issues.
+Sagemaker is a service amazon provides, to create, train and handle machine learning models. It handles the normally complicated  learning process to make it easier, training multiple large models and don't have to worry about all the tools and work processes that need to be done to learn efficient. Sagemaker contains a large tool-set to handle all different components of machine learning. It also include a debugger and profiler, which helps identifying training-errors and performance-issues.
 \newline Sagemaker Studio is a web-based visual user interface that provides you full access, control and insight of all the steps that need to be done to create train and analyse a model. You can upload own models and analyse results, make experience or provide it to get into production. 
 \newline Sagemaker Data Wrangler reduces the time required to prepare Data for Machine Learning. It provides easy access to Data-preparation-workflows including data-visualisation, data-adjustment and data-exploration.
 \newline Sagemaker Ground on the other side, handles all the quick and easy to use data that is needed to train a model properly. Because a model is only as good as the data that is given to it, with Sagemaker ground you are able to manage all the training data.
 \newline Sagemaker Edge Manager enables you to optimise, protect, monitor, and maintain machine learning models on edge device clusters to ensure that the models deployed on edge devices work properly.\repeatfootcite{Sagemaker}
 
 \subsection{Amazon Robomaker}
-Robomaker is a Cloud solution provided by amazon to create, simulate and test robot-based applications in large amounts. It provides access to a fully scale-able simulation infrastructure for all you robots and your CI/CD-Integration. Your are also given access to an IDE to develop new Robot applications and ROS(Robot Operating System) extensions to make your robot collaborate with the operating System.Robomaker also provides extensions to a lot Amazon Cloud Services like Kinesis(used to Stream Videos), Polly(Speachrecognition) and Cloud Watch(Monitoring and logging) for users that use ROS. It includes a lot of Example Applications that allow an easy and quick Access. Using the AWS-Services you are able to develop complete solutions that include powerful machine learning, voice recognition and speech processing capabilities and integrate them in Robot-applications.\repeatfootcite{Robomaker}
+Robomaker is a Cloud solution provided by amazon to create, simulate and test robot-based applications in large amounts. It provides access to a fully scale-able simulation infrastructure for all you robots and your CI/CD-Integration. Your are also given access to an IDE to develop new Robot applications and ROS(Robot Operating System) extensions to make your robot collaborate with the operating System. Robomaker also provides extensions to a lot Amazon Cloud Services like Kinesis(used to Stream Videos), Polly(Speachrecognition) and Cloud Watch(Monitoring and logging) for users that use ROS. It includes a lot of Example Applications that allow an easy and quick Access. Using the AWS-Services you are able to develop complete solutions that include powerful machine learning, voice recognition and speech processing capabilities and integrate them in Robot-applications.\repeatfootcite{Robomaker}
 
 \subsection{S3}
-Amazon Simple Storage Service is a data Storage solution on whom you are able to store any kind of objects. It provides a high level of security, scale ability and performance. You can use s3 for a large variety of different use cases such as websites, mobile applications, IoT and Big Data Analytics. You are able flexibly scale your storage resources to meet fluctuating demands - without upfront investment or resource acquisition. With S3 you save money without sacrificing performance by storing data in storage classes that support different levels of data access at appropriate fees.Your data is saved via encryption functions to provide the access management of unauthorised access. Access Point facilitate the data-management access with specific permissions for your applications using a shared data set. Using specific Data-Requests you are able to make Big-Data-Analyses over all your stored S3 Objects.\repeatfootcite{s3}
+Amazon Simple Storage Service is a data Storage solution on whom you are able to store any kind of objects. It provides a high level of security, scale ability and performance. You can use s3 for a large variety of different use cases such as websites, mobile applications, IoT and Big Data Analytics. The storage resource flexibly scalable to meet fluctuating demands - without upfront investment or resource acquisition. With S3 you save money without sacrificing performance by storing data in storage classes that support different levels of data access at appropriate fees.Your data is saved via encryption functions to provide the access management of unauthorised access. Access Point facilitate the data-management access with specific permissions for your applications using a shared data set. Using specific Data-Requests you are able to make Big-Data-Analyses over all your stored S3 Objects.\repeatfootcite{s3}
 
 \section{Other Tools}
 These two Tools are getting installed automatically if you run the init.sh Script as explained below. The most important two are Gazebo and rviz.
@@ -92,32 +93,34 @@ ROS(Robot Operating System) Visualisation (rviz) is graphical user interface whi
 \section{Implementing the local training methods}
 
 \subsection{Deepracer-Wiki}
-Although most of the Information about the Deepracer and The Amazon Deepracer League is in the Online Management Console of Amazon, some users made an own independent Deepracer-Wiki, in which you find a lot of information for local training, parameter adjustment and vehicle hacking. It also links to a community-blog, a community-website and a general community-GitHub-page. \repeatfootcite{Deepracer-Wiki}
+Although most of the Information about the Deepracer and The Amazon Deepracer League is in the Online Management Console of Amazon, some users made an own independent Deepracer-Wiki, in which a lot of information can be found for local training, parameter adjustment and vehicle hacking. It also links to a community-blog, a community-website and a general community-GitHub-page. \repeatfootcite{Deepracer-Wiki}
 
 \subsubsection{Local-Training Solutions}
-The Wiki includes a total list of 6 different documented GitHub projects from users, who tried to locally install all the amazon services and set up a whole local training environment. In our installation process we tried two different Repository's, because we couldn't get the first one to work on our PC. More Information about the process will be in the next section.
+The Wiki includes a total list of 6 different documented GitHub projects from users, who tried to locally install all the amazon services and set up a whole local training environment. In our installation process we tried two different Repository's, because the first one did not work as expected on the PC. More Information about the process will be in the next section.
 
 \subsection{First Approach}
-Our first approach was to clone a GitHub repository, who implemented the whole algorithm and a graphical user interface. The author of this project relies heavily on another repository from the GitHub user crr0004. Because his instructions were unclear and the project itself was lacking features and had poor usability, he decided to expand the project and make it easier to use. 
-Before getting started with installing the tools needed to run it on your machine you have to check if your computer meets the prerequisites:
-At first you have to ensure that your operating system is Ubuntu 18.04 or higher, because some of the packages needed are only available on Linux.
-The next main point is that your system has to run on a Nvidia GPU and have CUDA/CUDNN installed and configured. If your machine doesn't provide a Nvidia GPU you are only able to train on your CPU which is much slower and takes a lot of time.
-You also should have installed Docker as well as the Nvidia-Docker runtime. This is needed for the training environment to gain access to the GPU and create new timelines.
+The first approach was to clone a GitHub repository, who implemented the whole algorithm and a graphical user interface. The author of this project relies heavily on another repository from the GitHub user crr0004. Because his instructions were unclear and the project itself was lacking features and had poor usability, he decided to expand the project and make it easier to use. 
+Before getting started with installing, the tools needed to run it on the machine have to meet the prerequisites:
+At first ensure that the operating system is Ubuntu 18.04 or higher, because some of the packages needed are only available on Linux.
+The next main point is to check if the system runs on a Nvidia GPU and has CUDA/CUDNN installed and configured. If the machine doesn't integrate a Nvidia GPU you are only able to train on your CPU which is much slower and takes a lot of time.
+Docker is also needed as well as the Nvidia-Docker runtime. This is needed for the training environment to gain access to the GPU and create new
+timelines.
 Lastly vncviewer has to be installed, because its the program that controls all interaction between the graphical user interface and the controllers from amazon.
-If your system meets all the requirements above you have to clone to run the init.sh script.
-This may take up to 10 minutes and all it does is, it clone crr0004's\repeatfootcite{Local-Training-1} repository, runs the required scripts and creates the necessary folder structure including all the needed files, to manually adjust your code, train your model, and upload it to amazon.
-After the installation and initialisation process is completed, we were able to start a training session but after about 10 minutes the program crashed with a python buffer overflow. Searching the internet we did not find any evidence, that we made errors during the installation process and we also were not able to fix it.
+If the system meets all the requirements above the init.sh script from the GitHub repository has to be executed.
+This may take up to 10 minutes and all it does is, it clones crr0004's\repeatfootcite{Local-Training-1} repository, runs the required scripts and creates the necessary folder structure including all the needed files, to manually adjust the code, train the model, and upload it to amazon.
+After the installation and initialisation process is completed, we were able to start a training session but after about 10 minutes the program crash. Searching the internet we did not find any evidence, that we made errors during the installation process and we also were not able to fix it.
 
 \subsection{Final Approach}
-Our second try was to download Matt Camps\repeatfootcite{Local-Training-2} solution, which also relies heavily on crr0004's GitHub repository, but it has more detailed instructions and doesn't use as much self programmed scripts.The only Prerequisites you have to have installed on your computer are the Nvidia CUDA drivers and docker compose. That made it easy, to install and debug if error occurred. The next step was to clone the Repository and run the init.sh. Although following the tutorial we were not able to start a training session. After debugging and logging we found out, that the project heavily relies on Amazon Sagemaker, but the corresponding docker image was never pulled and installed. After downloading it, the scripts ran flawlessly and no following errors occurred.
+The second try was to download Matt Camps\repeatfootcite{Local-Training-2} solution, which also relies heavily on crr0004's GitHub repository, but it has more detailed instructions and doesn't use as much self programmed scripts. The only Prerequisites the computer has to have installed, are the Nvidia CUDA drivers and docker compose. That made it easy, to install and debug if errors occurred. The next step was to clone the Repository and run the init.sh. Although following the tutorial we were not able to start a training session. After debugging and logging we found out, that the project heavily relies on Amazon Sagemaker, but the corresponding docker image was never pulled and installed. After downloading it, the scripts ran flawlessly and no following errors occurred.
 
 \section{Training and setup process}
 
 \subsection{Installation Guide}
-After our successful installation i am going to explain the complete installation process. \newline Before the beginning you have to have all the prerequisites installed.\repeatfootcite{Local-Training-2}
+After our successful installation, this is a complete manuel of the installation process. \newline Before the beginning the system has to have all the prerequisites installed.\repeatfootcite{Local-Training-2}
 
 \begin{enumerate}
-    \item At first set the docker-nvidia2 as the default runtime in your daemon.json file that's located in /etc/docker/ . You will find the argument \textsl{default-runtime} which you set to \textsl{nvidia} 
+    \item At first, the docker-nvidia2 has to be set as the default runtime in the daemon.json file that's located in /etc/docker/.
+    \newline The argument \textsl{default-runtime} should beset to \textsl{nvidia} 
     \item The next step is to install Amazon Sagemaker. Use the Command \textsl{sudo apt-get install Sagemaker}  to download it from the Ubuntu packet-manager. This is necessary, because the following code will depend on the provided API from the Package.
     \item Completing the installation clone the GitHub Repository\url{https://github.com/mattcamp/deepracer-local/} and run the \textsl{start-training.sh} Script.
 \end{enumerate}
@@ -173,9 +176,9 @@ Stores the Training Parameters and the track name. The track name has to be the 
 Stores the reward function, that can be changed by the user. This is most important file and is changed the most.
 
 \subsection{starting a training session}
-If you want to start a new session you have to decided between creating a new model within the session or pretraining an old one and improving the performance. 
-\newline If you create a new model you have to run delete-last-run, than start-training. This will output the current training parameters and number of epoches.
-\newline If you decide to train an older model you have to run local-copy before and change the "pretrained" parameter in the hyperprams.json to true and than follow the instructions as explained above.
+Starting a new training session, a decision has to be made, wether to create a new model within the session, or use a pretrained model and improve the performance.
+\newline If a new model is to be created, first run delete-last-run, than start-training. This will output the current training parameters and number of epoches.
+\newline More often, a pretrained model is used, to train run the local-copy before and change the "pretrained" parameter in the hyperprams.json to true and than follow the instructions as explained above.
 
 \begin{figure}[H]
     \centering
@@ -184,7 +187,7 @@ If you want to start a new session you have to decided between creating a new mo
     \label{fig:console-output-start}
 \end{figure}
 
-If you are complete with the session, use stop-training. This will take approximately 20 - 25s. When the stopping process is completed you should copy your model via local-copy into a save directory. Completing the whole progress you run mk-model an get the finished model, to upload it to your deepracer.
+If the session is completed, use stop-training. This will take approximately 20 - 25s. When the stopping process is completed you should copy your model via local-copy into a save directory. Completing the whole progress run mk-model and get the finished model, to upload it to the deepracer.
 
 \begin{figure}[H]
     \centering
@@ -193,26 +196,34 @@ If you are complete with the session, use stop-training. This will take approxim
     \label{fig:console-output-stop}
 \end{figure}
 
-\subsection{Uploading a local trained Model}
-After finishing a training process you have to upload your model into the Cloud. This is necessary if you want to submit your Model in a Racing League or if you want to evaluate the Training information. Amazon doesnt provide an easy interface to upload data in your model garage.I am going to explain the solution we achived to upload a model in the s3 bucket an use it in your garage.
+\section{Errors occurring during the Installation process}
+At our first try we installed all the required tools and services, but made the mistake to forget to specify the Nvidia CUDA drivers. Although the installation was successful, we were not able to train the model correctly, because the drivers didn't handle the communication between the individual services well. The GUI had a lot of bugs and was mostly unresponsive. We decided to uninstall all the drivers, files and services and get back to the starting point. We read the instructions one more time slowly and then realised our human error. After repeating the whole installation process but including the right driver version everything seemed to work fine. 10 minutes into the training process we started receiving python errors, which are very unusual. Debugging the error and reading all log informations, we were not able to detect the problem. We gathered information on the internet and came to a conclusion, that the Amazon tools couldn't allocate the memory of the graphics cards properly, because the CUDA drivers, are only to allocate as much memory to the card, as there is storage space, in our example, the GPU has 8GB of VRAM. Trying out different work-around and solutions we were not able to fix the error or reproduce it in another scenario. After two weeks an a lot of frustrating hours we decided to delete the whole installation and try another different approach. \newline Meanwhile we tried setting up the whole process on our laptops using Ubuntu in an virtual machine. But after discovering the CUDA drivers wouldn't work out of a Virtual Machine because they were not allowed to allocate memory on the physical graphics card, likewise because the hypervisor wouldn't allow that, we tossed out that idea quickly. \newline Another common error is that all Repository's rely on the Amazon Tools like Sagemaker and Robomaker, but they dont include the installation in the instructions. You have to read the Ubuntu Wiki and search for the according packages to download.
+
+
+\section{Uploading a local trained Model}
+After finishing a training process the model has to be uploaded in the Cloud. This is necessary to evaluate the training information or to take part in the deepracer league. Amazon doesnt provide an easy interface to upload data in your model garage. I am going to explain the solution we achived to upload a model in the s3 bucket an use it in your garage. The AWS Management-Console received three major updates during this research process, the next sections will explain how to update a model in each version of the console.
+
+\subsection{Management-Console - 2021-02-21}
 
 \begin{enumerate}
-    \item At first you have to create a model an train it for at least 5 minutes. This is necessary, because after the training, amazon creates an entry in the s3 bucket, in which all the model information is stored.
-    \item The next step is to create the model.tar.gz from your locally trained model. This will be achieved by using mk-model.sh command.
-    \item Afterwards you have to copy 
+    \item At first the model has to be created and trained for at least 5 minutes. This is necessary, because after the training, amazon creates an entry in the s3 bucket, in which all the model information is stored.
+    \item The next step is to create the model.tar.gz from the locally trained model. This will be achieved by using mk-model.sh command.
+    \item Afterwards these files should be copied 
     \begin{itemize}
         \item model-directory
         \item ip-directory
         \item metadata.json
     \end{itemize}
-    and swap them with the corresponding directories in the s3 bucket.
-    \item At the End you have to navigate back to your model garage and should now be able to evaluate this model. Although the name doesnt change, the metadata and functions should have been swapped.
+    and swapped with the corresponding directories in the s3 bucket.
+    \item At the End the model should be seen in the training garage and is now able to be evaluated. Although the name doesnt change, the metadata and functions should have been swapped.
 \end{enumerate}
 
-After an update of the AWS-Console from the 2021-02-22 there is another easier solution:
+
+\subsection{Management-Console 2021-02-22 - 2021-03-30}
+This major update made it much easier to upload a model, because they added functionality to import an external model from the s3 bucket in the garage. Because of that, no old model data has to e overwritten or deleted.
 
 \begin{enumerate}
-    \item You have to use the command mk-model.sh on your pretrained model.
+    \item After training the model again the command mk-model.sh should be applied 
     \item The next step is to navigate into the S3 bucket, create a new Bucket and import the whole folder including:
     \begin{itemize}
         \item model-directory
@@ -220,68 +231,74 @@ After an update of the AWS-Console from the 2021-02-22 there is another easier s
         \item metadata.json
         \item reward-function.py
     \end{itemize}
-    \item Lastly navigate to your model-garage and import the created S3 bucket into the Garage. The Cloud will automatically detect the new model and you can start an evaluation.
+    \item Lastly navigate to the model-garage and import the created S3 bucket into the Garage. The Garage will automatically detect the new model and you can start an evaluation.
 \end{enumerate}
 
-\section{Errors occurring during the Installation process}
-At our first try we installed all the needed tools and services, but made the mistake to forget to specify the Nvidia CUDA drivers. Although the installation was successful, we were not able to train the model correctly, because the drivers didn't handle the communication between the individual services well. The GUI had a lot of bugs and was mostly unresponsive. We decided to uninstall all the drivers, files and services and get back to 0. We read the instructions one more time slowly and then realised our human error. After repeating the whole installation process but including the wright driver version everything seemed to work fine. 10 minutes into the training process we started receiving python buffer overflow errors, which is very unusual. Debugging the error and reading all log information, we were not able to detect the problem causing the buffer overflow. We gathered information on the internet and came to a conclusion, that the Amazon tools couldn't allocate the memory of the graphics cards properly. Trying out different work-around and solutions we were not able to fix the error or reproduce it in another scenario. After two weeks an a lot of frustrating hours we decided to delete the whole installation and try another different approach. \newline Meanwhile we tried setting up the whole process on our laptops using Ubuntu in an virtual machine. But after discovering the CUDA drivers wouldn't work out of a Virtual Machine because they were not allowed to allocate memory on the physical graphics card, likewise because the hypervisor wouldn't allow that, we tossed out that idea quickly. \newline Another common error we discovered  is that all Repository's rely on the Amazon Tools like Sagemaker and Robomaker, but they dont include the installation in the instructions. You have to read the Ubuntu Wiki and search for the according packages to download.
+\subsection{Management-Console 2021-03-31 - }
+After management console update from 31.3.2021, this method is no longer feasible, because newly added permissions, complicate the process. Now, when creating a new bucket, all data must be enabled for read and write operations, as Amazon creates its own virtual user for accessing the new model. This user is only responsible for the exchange of data between the s3 bucket and the model garage and is deleted again after the successful import.
+
+\begin{enumerate}
+    \item At the beginning a s3 Bucket has to be created.
+    \item Secondly the properties of this bucket have to be changed. This is only possible using JSON formatted data.
+    \begin{listing}[H]
+    \begin{minted}[frame=single, 
+            framesep=3mm,
+            linenos=true, 
+            xleftmargin=21pt,
+            tabsize=4]{json}
+    {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "deepracer.amazonaws.com"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket-name",
+                "arn:aws:s3:::bucket-name/*"
+            ]
+        }
+        ]
+    }
+    \end{minted}
+    \end{listing}
+    
+    The above shown JSON-Code is the necessary Authorisation Code to include in the s3 bucket. Without that, the Garage can not access data. The "Action" Array describes the gained Properties, in this Case [GetObject, ListBucket, PutObject, PutObjectAcl]. "Principal" describes the owner of the given rights.
+    \item The next step is to navigate into the S3 bucket, create a new Bucket and import the whole folder including:
+    \begin{itemize}
+        \item model-directory
+        \item ip-directory
+        \item metadata.json
+        \item reward-function.py
+    \end{itemize}
+    While importing, its important, to select the folder and click allow access to folder button.
+    \item Lastly navigate to the model-garage and import the created S3 bucket into the Garage. The Garage will automatically detect the new model and you can start an evaluation.
+\end{enumerate}
+
+\section{Errors occurring during the Upload process}
+The biggest source of errors is not a human error or in the code, but the constant updates and non-existent documentation of the Amazon Management Console. Since you as a developer are not notified when the next update is coming, it is mostly by chance that you notice that the upload of a model does not work. Since the last change it is only possible to upload a model to Garage under certain circumstances, not because the possibility is not there, but because the new update has changed the overall security policy and it is now very difficult to access objects outside of your s3 bucket. This is made very difficult by additional poorly described error messages.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/ErrorDuringUpload.PNG}
+    \caption[]{Error during import process\footnotemark}
+    \label{fig:console-output-start}
+\end{figure}
+In the above photo you can see an error message while importing to the garage. The error message is "File does not exist". However, since the orders consist of about 100 files, it is very difficult to locate the missing file. This test was done with a s3 bucket, which was converted to a model in the previous update without any problems.The "Import Model Manualy" link leads to a general documentation page that provides rough instructions on how to import Sagemaker models into the s3 bucket, but not how models can be imported into the garage or which file the error message refers to.
+
 
 \section{Difference between Cloud Training and Local Training}
-As expected the Local training wasn't performing as good as training in the cloud. In the next section will compare the Hardware and Performance of the PC and the Cloud 
+As expected the Local training wasn't performing as good as training in the cloud. This section will compare the Hardware and Performance of the PC and Cloud. 
 
-% \subsection{Hardware}
-
-% \subsubsection{PC}
-
-% The local Computer, on which we trained our models consists of
-
-% \begin{table} [H]
-% \caption{Computer Components}
-% \label{tab:Components}
-% \centering
-% \setlength{\tabcolsep}{5mm}
-% \def\arraystretch{1.25}
-% \begin{tabular}{|r|r|c|c|}
-% \hline
-% \textbf{Hardware} & \textbf{Spec} \\
-% \hline\hline
-% Processor: & Intel i7 6700k @4GHz \\
-% \hline
-% Graphics Card: & Nvidia GTX 1070 8gb \\
-% \hline
-% Memory: & 16gb DDR4 2666MHz \\
-% \hline
-% \end{tabular}
-% \end{table}
-
-
-% \subsubsection{Amazon Cloud}
-% Amazon doesnt provide much Information on its own Hardware, because they change hardware very often and it depends on usage and customer. In our Case research showed that they run
-
-
-% \begin{table} [H]
-% \caption{Amazon Cloud Components}
-% \label{tab:Cloud-Components}
-% \centering
-% \setlength{\tabcolsep}{5mm}
-% \def\arraystretch{1.25}
-% \begin{tabular}{|r|r|c|c|}
-% \hline
-% \textbf{Hardware} & \textbf{Spec} \\
-% \hline\hline
-% Processor: & Dual Socket Intel Xeon E5410 2.33GHz \\
-% \hline
-% Graphics Card: & unknown \\
-% \hline
-% Memory: & unknown \\
-% \hline
-% \end{tabular}
-% \end{table}
-% \repeatfootcite{Amazon-Cloud-Hardware}
- 
 
 \subsection{Performance-Difference}
-To exactly measure the difference between the Cloud and the research Computer, we set up a Test-Model. The model specifications are: 
+To exactly measure the difference between the Cloud and the research Computer, a Test-Model was set up. The model specifications are: 
  
 \begin{table} [H]
 \caption{Sample Model Specifications}
@@ -308,9 +325,9 @@ Number of epochs: & 10 \\
 \end{tabular}
 \end{table}
 
-Using the standard reward function, the model was trained on the Oval Track. We choose this test-environment because its very easy to learn, and only given 30 minutes to train the model, we couldn't train it on a more difficult Track, expecting to master it. Moreover the Race-Mode was set to time-trial, because this model isn't trained to race in a league against other Deepracers.
+Using the standard reward function, the model was trained on the Oval Track. This test-environment was choosen, because its very easy to learn, and only given 30 minutes to train the model, it wouldn't master a more difficult track. Moreover the Race-Mode was set to time-trial, because this model isn't trained to race in a league against other Deepracers.
 \newline
-To compare the two models, we started an evaluation in the AWS-Cloud. This process simulates the car on the track and drives 3 laps. Then it determines the probability that the deepracer will successfully complete a lap without crossing the line.
+To compare the two models, an evaluation was started in the AWS-Cloud. This process simulates the car on the track and drives 3 laps. Then it determines the probability that the deepracer will successfully complete a lap without crossing the line.
 
 
 \subsubsection{Cloud-Training}
@@ -327,6 +344,7 @@ After finishing the Evaluation in the Cloud the Results were:
 
 \subsubsection{Local-Training}
 Evaluating the local-Training, the results were as following: 
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/localEvaluation.PNG}
@@ -348,7 +366,7 @@ The Table below shows the Difference between storing and evaluating Data online 
 \hline
 \textbf{service} & \textbf{pricing AWS} & \textbf{pricing PC} \\
 \hline\hline
-training and evaluation & 3.50 US\$ per hour & 0.29 US\$ per Kilowatt per hour \\
+training and evaluation & 3.50 US\$ per hour & 0.29 US\$ per hour \\
 \hline
 model storage & 0.023 US\$ per GB and month & free of charge\\
 \hline
@@ -357,24 +375,30 @@ model storage & 0.023 US\$ per GB and month & free of charge\\
 \footnote{Cited date 2020/08/20}
 \repeatfootcite{PowerCost}
 
+\subsection{Price-Example}
+To simulate the large price difference, a price example was calculated using students training their Deepracer for 8 hours.
+
+\begin{table}[H]
+\caption{Pricing Example}
+\label{tab:services}
+\centering
+\setlength{\tabcolsep}{5mm}
+\def\arraystretch{1.25}
+\begin{tabular}{|r|r|c|c|}
+\hline
+\textbf{AWS-DeepRacer-Jobs} & \textbf{Hours} & \textbf{Total PC} & \textbf{Total Cloud} \\
+\hline\hline
+Training & 8,00 & 2.23 US\$ & 28US\$ \\
+\hline
+Evaluation & 0.083 & 0 US\$ & 0.29 US\$ \\
+\hline
+\end{tabular}
+\end{table}
+\footnote{Cited date 2020/08/20}
+\repeatfootcite{PowerCost}
+
+In the table above you can see that the total cost for 8 hours of training and evaluation in the cloud is \$28.29 and on the local PC it is \$2.23. However, this does not include the purchase of a computer.
+
 \subsection{Result}
-After training in the Cloud and training locally, we came to the conclusion, that the choices depends on the use-case. Comparing the training Data, the Cloud is 40\% faster, otherwise comparing the Cost-Explorer, the Cloud is 1200\% more expensive. The AWS-Management Console has a very detailed documentation and guides that help you creating your first model. Its also very easy and fast to train and evaluate the model. On the other side local training is very cost-efficient although, there is poor to none documentation and if errors occur or, you need to debug you have to have a lot of knowledge of the structure of the Amazon tools and services that are running in the background. 
+After training in the Cloud and training locally, we came to the conclusion, that the choice depends on the use-case. Comparing the training Data, the Cloud is 40\% faster, otherwise comparing the Cost-Explorer, the Cloud is 1268\% more expensive. The AWS-Management Console has a very detailed documentation and guides that help you creating your first model. Its also very easy and fast to train and evaluate the model. On the other side local training is very cost-efficient although, there is poor to none documentation and if errors occur or, you need to debug you have to have a lot of knowledge of the structure of the Amazon tools and services that are running in the background. 
 
-
-
-% If you want an easy and fast way to create, train and evalute models you should remain in the AWS-Management Console. Otherwise if you want to save costs, and got a lot of technical knowledge its better to train local. The Cloud is about 40\% faster and the documentation is very detailed. Training it yourself is a very complicated way to go, that includes a lot of debugging and research. Another prerequisite for local training is to have high performance hardware. 
-
-% \section{Gap to real world environment}
-
-
-
-% \section{Deepracer League}
-
-% \subsection{Online-League}
-
-% \subsection{Championships}
-
-
-
-
-% \section{Amazon Management-Console}
