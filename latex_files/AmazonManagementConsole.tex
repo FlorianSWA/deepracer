@@ -1,0 +1,28 @@
+\chapter{AWS}
+Author: Sebastian Rohrer \newline
+Amazon Web Services (AWS) is a comprehensive and widely used cloud platform, providing more than 200 feature-rich services from globally distributed data centres. 
+AWS has an extensive global cloud infrastructure. It provides many regions and availability zones, with low latency, high throughput, and highly redundant networks. AWS is available in 80 availability zones in 25 geographic regions around the world.
+Gartner Research ranked AWS in the "Leaders Quadrant" in its new "2020 Magic Quadrant for Cloud Infrastructure and Platform Services" report \repeatfootcite{GartnerResearch}. In this Magic Quadrant, CIPS is defined as "standardised, highly automated products in which infrastructure resources (for example, computing, network and storage resources) are supplemented by integrated platform services."
+
+\section{AWS-Management-Console} \repeatfootcite{AWS}
+The Management Console provides a web interface for accessing and managing AWS cloud services. In this project, two services were used by the cloud, the DeepRacer service and the S3 database.
+
+\subsection{DeepRacer}
+This service provides the starting point for all activities that can be executed by a car. It is a mixture of documentation and explanations about the different algorithms and Application Programming Interfaces(APIs) and a general overview of all the models, virtual competitions and forums. Under the subheading Model Garage, all models are stored and can be trained as well as evaluated. This service is closely coupled with the S3 database, where the actual physical files are stored. 
+
+
+\subsection{Billing}
+Amazon also provides a service for calculating the costs incurred to date, which also contains estimates of the costs due in the future. Cost limits can be created, reports are delivered daily, and bills can be printed digitally. In the use-case of this project, this service was helpful to watch the costs incurred.
+
+\subsection{Amazon Sagemaker}
+Sagemaker is a service Amazon provides to create, train and handle machine learning models. It assits the usually complicated learning process to make it easier, training multiple large models and not having to worry about all the tools and work processes that need to be done to learn efficiently. Sagemaker contains an extensive tool-set to handle all different components of machine learning. It also includes a debugger and profiler, which helps to identify training errors and performance issues.
+\newline Sagemaker Studio is a web-based visual user interface that provides full access, control and insight of all the steps that need to be done to create, train and analyse a model.
+\newline Sagemaker Data Wrangler reduces the time required to Prepare Data for Machine Learning. It provides easy Access to Data-preparation-workflows, including data visualisation, data adjustment and data exploration.
+\newline Sagemaker Ground on the other side, handles all the quick accessible data needed to train a model properly. Because a model is only as good as the data given to it, Sagemaker ground manages all the training data.
+\newline Sagemaker Edge Manager enables optimising, protecting, monitoring, and maintaining machine learning models on edge device clusters to ensure that the models deployed on edge devices work properly.\repeatfootcite{Sagemaker}
+
+\subsection{Amazon Robomaker}
+Robomaker is a Cloud solution provided by amazon to create, simulate and test robot-based applications in large amounts. It provides access to a fully scale-able simulation infrastructure for all robots and the Continuous Integration and  Continuous Delivery(CI/CD) Integration. Using Robomaker, the service provides access to an IDE to develop new Robot applications and Robot Operating System(ROS) extensions to make the robot collaborate with the operating system. Robomaker also provides extensions to a lot of Amazon Cloud Services like Kinesis(used to Stream Videos), Polly(Speachrecognition) and Cloud Watch(Monitoring and logging) for users that use ROS. It includes many Example Applications that allow easy and quick access. Using the AWS-Services, it is possible to develop complete solutions that include powerful machine learning, voice recognition and speech processing capabilities and integrate them in Robot-applications.\repeatfootcite{Robomaker}
+
+\subsection{S3}
+Amazon Simple Storage Service(S3) is a Data Storage solution to store any kind of objects. It provides a high level of security, scalability and performance. S3 can be used for a large variety of different use cases such as websites, mobile applications, IoT and Big Data Analytics. The storage resource flexibly scalable to meet fluctuating demands - without upfront investment or resource acquisition. The data is saved via encryption functions to prevent the access management of unauthorised access. Access Point facilitates the data-management access with specific permissions for all applications using a shared data set.\repeatfootcite{s3}

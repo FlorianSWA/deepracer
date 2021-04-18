@@ -1,52 +1,54 @@
 \chapter{Deepracer League}
 Author: Sebastian Rohrer\newline
-The AWS Deepracer League is a championship in which previously trained models can compete against each other.After each training session, there is the option to let the current model participate in an online race to see how it does against differently trained competitors. The Virtual Races are divided into Community Races and Online Leagues.\repeatfootcite{DeepracerLeague}
+The AWS Deepracer League is a championship in which previously trained models can compete against each other. After each training session, there is the option to let the current model participate in an online race to see how it does against differently trained competitors. The Virtual Races are divided into Community Races and Online Leagues.\repeatfootcite{DeepracerLeague}
 
 \section{Race-Types}
-The Deep Racer supports 3 different Race-Types. Each Type has to be trained individually.
+The Deep Racer supports three different Race-Types. Each Type has to be trained individually.
 
 \subsection{Head-Head}
 In the head-to-head qualifying, the racer completed a few laps while avoiding moving the AWS robot car on the track. At the end of this month, the top 32 qualifying rounds will enter the knockout rounds and fight side by side with other competitors.
 
 \subsection{Object-Avoidance}
-In the object avoidance competition, participants navigate the track while avoiding a specified number of fixed objects on the road. The fastest racer (including reset and collision time penalty) will be promoted to the chance to participate in the Champions League. This is the only Type, that presupposes the Deep-Racer Evo, because two cameras are needed to gain a stereo video feed, to estimate lengths and depths.
+In the object avoidance competition, participants navigate the track while avoiding a specified number of fixed objects on the road. The fastest racer (including reset and collision time penalty) will be promoted to the chance to participate in the Champions League. This is the only Type that presupposes the Deep-Racer Evo because two cameras are needed to gain a stereo video feed to estimate lengths and depths.
 
 \subsection{Time-Trial}
 In the time trial, the racer must complete the required number of laps on the track. The racer with the fastest lap time (including heavy penalties for deviating from the track) will have a chance to compete for the Champions League.
 
 \section{Online League}
-All online races are directly accessible via the AWS cloud. Each Division is run by a different Race-Type and Map. After successfully participating in a division and getting upgraded to the next, the maps and Race-Types are getting more difficult.
+All online races are directly accessible via the AWS cloud. Each Division is run by a different Race-Type and Map. After successfully participating in a division and getting upgraded to the next, the maps and Race-Types are getting more complicated.
 
 
 \subsection{Open Division}
-Any user can participate for free, who has trained his model for at least 5 minutes. This is the first and easiest tournament. The Race-Type is Time Trial and the map is called Po-Chun Speedway. After finishing the race, the lap-time is compared to the other competitor's and the model is given a rank. Every month the top 10\% are promoted to the Pro Division. If needed, changes to the reward function can be made and the model is able to participate as often as possible. 
+Any user can participate for free, who has trained his model for at least 5 minutes. This is the first and easiest tournament. The Race-Type is Time Trial, and the map is called Po-Chun Speedway. After finishing the race, the lap-time is compared to the other competitor's and the model is given a rank. Every month the top 10\% are promoted to the Pro Division. If needed, changes to the reward function can be made, and the model can participate as often as possible. 
 
 \subsection{Pro Division}
-In Pro Division, the Race-Type is Head-to-Head, but the other racers are swapped with bots. The map is called Po-Chun Super Speedway and is similar as the track on the open division. 
+In Pro Division, the Race-Type is Head-to-Head, but the other racers are swapped with bots. The map is called Po-Chun Super Speedway and is similar to the track on the open Division. 
 
 
 \subsection{Pro Division Finals}
-At the end of each month, the top 16 racers in the Pro department will compete with each other in the live racing console. This game will determine who will advance to the 2021 Champions League in the Pro Division Finals 2021 competition. The monthly Pro department winners will receive a free Pro Division Finals 2021 trip and participate in the Champions League, with a chance to win a machine learning education sponsorship worth US\$20,000. In both departments, you can collect digital rewards, including vehicle customisation and accessories, which will be released to participants every month after the winners are announced.
-The Race-Type and Map are not yet announced, that forces the players to create multiple models and train their models on different tracks. This fact makes the finals as hard as possible for the players.  
+At the end of each month, the top 16 racers in the Pro department will compete with each other in the live racing console. This game will determine who will advance to the 2021 Champions League in the Pro Division Finals 2021 competition. The monthly Pro department winners will receive a free Pro Division Finals 2021 trip and participate in the Champions League, with a chance to win a machine learning education sponsorship worth US\$20,000. In both departments, digital rewards can be collected, including vehicle customisation and accessories, which will be released to participants every month after the winners are announced.
+The Race-Type and Map are not yet announced, which forces the players to create multiple models and train their models on different tracks. This fact makes the finals as hard as possible for the players.  
 
 \section{Community Races}
-Instead of participating in a real league, there is also the possibility to create an own race. With this Option it is possible to race against other players who are also not participating in an online league. The Map and Race-Type is user changeable. As today (11.03.2021) there are no available Community Races, because the majority of the Racers is focused on the real online tournaments.
+Instead of participating in an actual league, there is also the possibility to create an own race. With this option, it is possible to race against other players who do not participate in an online league. The Map and Race-Type are user-changeable. Today (11.03.2021), there are no available Community Races because the majority of the Racers is focused on real online tournaments.
 
 \section{DeepRacer TV}
-AWS DeepRacer TV is an online Event, in which famous Formula One Racers train their own DeepRacer and compete against Machine Learning Professionals. The Event is hosted on the Amazon DeepRacer League Website and gets live streamed on large Video-streaming services like YouTube and Twitch. The Winner gets a ticket to the Pro Division Finals. The Event is split in Weekly Rounds, and each competitor is filming their own progress. 
+AWS DeepRacer TV is an Online Event in which famous Formula One Racer train their own DeepRacer and compete against Machine Learning Professionals. The event is hosted on the Amazon DeepRacer League Website and gets live-streamed on extensive Video-streaming services like YouTube and Twitch. The winner gets a ticket to the Pro Division Finals. The event is split into Weekly Rounds, and each competitor is filming their progress. 
 
 \section{Participation conclusion}
-As part of this thesis, we participated once in an open division to test how competitive the opponents are, and how well the model needs to be trained to achieve good rankings.  
+As part of this thesis, we participated once in an open division to test how competitive the opponents are and how well the model needs to be trained to achieve good rankings.  
 
 \subsection{Model}
-For this experiment, a test model was created based on the hyperparameters as seen on the table \ref{Sample Model Specifications}. The reward function has been reprogrammed using a waypoint algorithm that analyses existing waypoints on the map and calculates an ideal route. 
- \begin{listing}[H]
+For this experiment, a test model was created based on the hyperparameters shown on the table \ref{Sample Model Specifications}. The reward function has been reprogrammed using a waypoint algorithm that analyses existing waypoints on the map and calculates an ideal route.
+
+\begin{listing}[H]
     \begin{minted}[frame=single, 
             framesep=3mm,
             linenos=true, 
             xleftmargin=21pt,
-            tabsize=4]{python}
-
+            tabsize=4]{Python}
+    {
+     
     waypoints = params['waypoints']
     closest_waypoints = params['closest_waypoints']
     heading = params['heading']
@@ -76,7 +78,8 @@ For this experiment, a test model was created based on the hyperparameters as se
     return reward
     \end{minted}
 \end{listing}
-In the code example above, the next and previous waypoint is fetched from an array containing all points of the whole route. Then a line is calculated from the points, and based on this, their slope. This value is compared against a reference value and based on that the reward is paid out. The model was trained on the oval track for 1 hour and 48 minutes. The subsequent evaluation showed that in all 3 test trials, the car completed the track 100\% and all trials lasted between 23 and 24 seconds.
+
+The next and previous waypoint is fetched from an array containing all points of the whole route in the code example above. Then a line is calculated from the points, and based on this, their slope. This value is compared against a reference value, and based on that, the reward is paid out. The model was trained on the oval track for 1 hour and 48 minutes. The subsequent evaluation showed that in all 3 test trials, the car completed the track 100\% and all trials lasted between 23 and 24 seconds.
 
 \subsection{Result}
-Since this is an open-division, it was not possible to train the model on the track in advance, as the point behind this is to program a solid algorithm that will perform well on all tracks. The DeepRacer finished 48th out of 50th competitors, with a time of 6 minutes 17.831 seconds and 4 minutes 20.464 seconds off first place.  From the duration of the training and the algorithm, it can be said that in order to participate in the simplest competition and achieve a good place, the respective model must be programmed very sophisticated and have many hours of training behind it.  Therefore, if you are a beginner and want to gain experience with DeepRacer, it is best to participate in a community race or create one, because even in the simplest competitions the competition is high.
+Since this is an open division, it was not possible to train the model on the track in advance, as the point behind this is to program a solid algorithm that will perform well on all tracks. The DeepRacer finished 48th out of 50th competitors, with 6 minutes 17.831 seconds and 4 minutes 20.464 seconds off first place.  From the duration of the training and the algorithm, it can be said that in order to participate in the most superficial competition and achieve a good place, the respective model must be programmed very sophisticatedly and have many hours of training behind it. For beginners who want to gain experience with DeepRacer, it is best to participate in a community race or create one because the competition is high even in the most straightforward races.
